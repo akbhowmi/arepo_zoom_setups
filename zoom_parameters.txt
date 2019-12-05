@@ -1,0 +1,31 @@
+#parameters which determine which halo is to be selected to resimulate
+
+path_to_uniform_run='/ufrc/lblecha/aklantbhowmick/arepo_runs_aklant/'
+uniform_run='L25n128MUSIC_rerun'
+index_of_selected_halo=5
+desired_redshift_of_selected_halo=0
+earlier_redshift=125    
+
+
+#run parameters for generating config files for MUSIC and AREPO 
+path_to_generated_files='/ufrc/lblecha/aklantbhowmick/NEW_AREPO_RUNS/'
+zstart=127.
+BOXSIZE_IN_MPC=25
+BASEGRID_PARAMETER=7
+N=2**BASEGRID_PARAMETER
+TYPE='ZOOM'
+MUSIC_OUTPUT_FILENAME='IC.hdf5'
+
+prototypefilepath_MUSIC = '/ufrc/lblecha/aklantbhowmick/MUSIC/final_zoom1.conf'
+generated_MUSIC_config_filename = '/MUSIC/MUSIC_CONFIG.txt'
+prototypefilepath_AREPO = '/ufrc/lblecha/aklantbhowmick/arepo_runs_aklant/L25n32MUSIC_zoom_levelmax7_padding8/arepo/Config.sh'
+generated_AREPO_config_filename = '/AREPO/Config.sh'
+levelmin=7
+levelmax=9
+
+#Base cosmology
+om_m=0.3
+om_l=0.7
+om_b=0.04
+H0=70.
+sigma_8=0.82
