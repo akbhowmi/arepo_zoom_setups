@@ -3,7 +3,7 @@ This is set of codes that can be used to setup zoom simulations using the cosmol
 
 Important note: In order to use this setup, you must already have uniform simulation run with a known random seed for the initail density field.
 
-Following is the sequence of steps o create a zoom setup:
+Following is the sequence of steps to create a zoom setup:
 
 Step 1: Setup your desired configuration. The configuration file is zoom_parameters.txt. Please refer to 'zoom_parameters.txt' for a detailed description of the parameters
 
