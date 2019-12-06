@@ -13,7 +13,7 @@ This code selects your desired halo from a uniform volume run, and traces the pa
         
  Step 3:  Execute the python file 'create_config_files_for_MUSIC.py'. This generates the entire configuration for MUSIC in the location given by:        path_to_generated_files + FOLDERNAME  + '/MUSIC'
  
-where the variables 'path_to_generated_files' and 'FOLDERNAME' are set by user on 'zoom_parameters.txt'
+where the variables 'path_to_generated_files' and 'FOLDERNAME' are to be set by user the on 'zoom_parameters.txt'
 
 Step 4: Go to the generated 'MUSIC' folder and execute the code using the command './MUSIC MUSIC_CONFIG.txt'. This generates the output initial condition file 'IC.hdf5'
 
