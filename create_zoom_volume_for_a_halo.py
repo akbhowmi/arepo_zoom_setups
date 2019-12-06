@@ -114,5 +114,7 @@ zoom_volume_mins=numpy.array([xmin,ymin,zmin])
 zoom_volume_maxs=numpy.array([xmax,ymax,zmax])
 zoom_volume_centers=(zoom_volume_maxs+zoom_volume_mins)/2/boxsize
 zoom_volume_centers[zoom_volume_centers<0]+=1
+zoom_volume_centers[zoom_volume_centers>1]-=1
+
 zoom_volume_extent=(zoom_volume_maxs-zoom_volume_mins)/boxsize  
 numpy.save('Volume_parameters_for_MUSIC.npy',[zoom_volume_centers,zoom_volume_extent])

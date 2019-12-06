@@ -1,27 +1,23 @@
 #parameters which determine which halo is to be selected to resimulate
 
-path_to_uniform_run='/ufrc/lblecha/aklantbhowmick/arepo_runs_aklant/'
-uniform_run='L25n128MUSIC_rerun'
-index_of_selected_halo=100
-desired_redshift_of_selected_halo=0
-earlier_redshift=125    
-
+path_to_uniform_run='/ufrc/lblecha/aklantbhowmick/arepo_runs_aklant/'  #This selects a preexisting uniform volume run to zoom into
+uniform_run='L25n128MUSIC_rerun'  #Name of the run. Must be such that the output snapshots are located in: 'uniform run'/output 
+index_of_selected_halo=1          #index of the halo within the group catalog at needs to be resimulated
+desired_redshift_of_selected_halo=1    # redshift at which we are selecting the halo
+earlier_redshift=125  #redshift at which the particles of the selected halo are traced, in order to find their initial positions. Snapshot must exist at this redshift for the uniform volume run    
 
 #run parameters for generating config files for MUSIC and AREPO 
-path_to_generated_files='/ufrc/lblecha/aklantbhowmick/NEW_AREPO_RUNS/'
-zstart=127.
-BOXSIZE_IN_MPC=25
-BASEGRID_PARAMETER=7
-N=2**BASEGRID_PARAMETER
-TYPE='ZOOM'
-MUSIC_OUTPUT_FILENAME='IC.hdf5'
+path_to_generated_files='/ufrc/lblecha/aklantbhowmick/NEW_AREPO_RUNS/' #This specifies the path at which the setup is created. The directory will be created if it does not already exist 
+zstart=127.     # This specifies the starting redshift at which the initial conditions are created.
+BOXSIZE_IN_MPC=25  # This specifies the simulation boxsize in Mpc. Must match the boxsize of the uniform volume run.
+MUSIC_OUTPUT_FILENAME='IC.hdf5' #Name of the music output file. DO NOT try changing this yet. Need to update the code
 
-prototypefilepath_MUSIC = './setup_prototypes/MUSIC/final_zoom2.conf'
-generated_MUSIC_config_filename = '/MUSIC/MUSIC_CONFIG.txt'
-prototypefilepath_AREPO_config = './setup_prototypes/AREPO/arepo/Config.sh'
-prototypefilepath_AREPO_param = './setup_prototypes/AREPO/param.txt'
-generated_AREPO_config_filename = '/AREPO/arepo/Config.sh'
-generated_AREPO_param_filename = '/AREPO/param.txt'
+prototypefilepath_MUSIC = './setup_prototypes/MUSIC/final_zoom2.conf' #the baseline MUSIC configuration file is adopted from this
+generated_MUSIC_config_filename = '/MUSIC/MUSIC_CONFIG.txt'  #Name of the generated MUSIC configuration file
+prototypefilepath_AREPO_config = './setup_prototypes/AREPO/arepo/Config.sh' #baseline AREPO configuarion file is adopted from this
+prototypefilepath_AREPO_param = './setup_prototypes/AREPO/param.txt' #baseline AREPO parameter file is adopted from here
+generated_AREPO_config_filename = '/AREPO/arepo/Config.sh' #generated AREPO config file. Do not change the path
+generated_AREPO_param_filename = '/AREPO/param.txt' #generated AREPO parameter file. Do not change the path
 levelmin=7
 levelmax=9
 
