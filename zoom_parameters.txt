@@ -2,7 +2,7 @@
 
 path_to_uniform_run='/ufrc/lblecha/aklantbhowmick/arepo_runs_aklant/'
 uniform_run='L25n128MUSIC_rerun'
-index_of_selected_halo=5
+index_of_selected_halo=100
 desired_redshift_of_selected_halo=0
 earlier_redshift=125    
 
@@ -16,16 +16,21 @@ N=2**BASEGRID_PARAMETER
 TYPE='ZOOM'
 MUSIC_OUTPUT_FILENAME='IC.hdf5'
 
-prototypefilepath_MUSIC = '/ufrc/lblecha/aklantbhowmick/MUSIC/final_zoom1.conf'
+prototypefilepath_MUSIC = './setup_prototypes/MUSIC/final_zoom2.conf'
 generated_MUSIC_config_filename = '/MUSIC/MUSIC_CONFIG.txt'
-prototypefilepath_AREPO = '/ufrc/lblecha/aklantbhowmick/arepo_runs_aklant/L25n32MUSIC_zoom_levelmax7_padding8/arepo/Config.sh'
-generated_AREPO_config_filename = '/AREPO/Config.sh'
+prototypefilepath_AREPO_config = './setup_prototypes/AREPO/arepo/Config.sh'
+prototypefilepath_AREPO_param = './setup_prototypes/AREPO/param.txt'
+generated_AREPO_config_filename = '/AREPO/arepo/Config.sh'
+generated_AREPO_param_filename = '/AREPO/param.txt'
 levelmin=7
 levelmax=9
 
 #Base cosmology
-om_m=0.3
-om_l=0.7
-om_b=0.04
-H0=70.
+om_m=0.3089
+om_l=0.6911
+om_b=0.0486
+H0=67.71
 sigma_8=0.82
+
+
+FOLDERNAME='%s_zoom_levelmax%d_haloindex%d_redshift%.2f'%(uniform_run,levelmax,index_of_selected_halo,desired_redshift_of_selected_halo)

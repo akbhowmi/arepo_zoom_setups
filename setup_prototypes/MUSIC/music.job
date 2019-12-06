@@ -1,0 +1,31 @@
+#!/bin/bash					
+
+#SBATCH -J L25n128MUSIC
+#SBATCH --partition=hpg2-compute
+#SBATCH --account=lblecha
+#SBATCH --qos=lblecha
+#SBATCH --output=L25n128MUSIC-%j.stdout
+#SBATCH --error=L25n128MUSIC-%j.stderr
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --ntasks-per-socket=1
+#SBATCH --distribution=cyclic:cyclic
+#SBATCH --mem-per-cpu=38000mb
+#SBATCH --time=1:00:00
+#SBATCH --mail-user=aklantbhowmick@ufl.edu
+#SBATCH --mail-type=END,FAIL
+
+module purge
+
+
+module load intel/2018
+module load openmpi/3.1.2
+module load gsl
+##module load fftw
+
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+#srun  --mpi=pmix_v2 ./arepo/Arepo param.txt 0> output/OUTPUT 2> output/ERROR
+
+./MUSIC torrey_config.txt
