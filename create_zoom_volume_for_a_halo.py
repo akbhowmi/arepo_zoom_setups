@@ -13,6 +13,8 @@ import numpy
 
 #%pylab inline
 
+scaled_halo_centers=numpy.array([1.,1.,1.])
+
 def get_group_ids(output_path,z_current,N,group_type='group'):    
     if (group_type=='groups'):              
         masstype,output_redshift=(arepo_package.get_group_property(output_path,'GroupMassType', desired_redshift));
@@ -74,7 +76,9 @@ Coordinates_early_selected=Coordinates_early[indices_particles]
 
 initial_positions_of_halo_particles=Coordinates_in_IC[ParticleIDs]
 f,ax=plt.subplots(figsize=(10,10))
-arepo_package.make_image(group_particles,group_particles,'yz',ax,boxsize,NBINS=200,colormap='Blues_r',opacity=0.4)
+#arepo_package.make_image(group_particles,group_particles,'yz',ax,boxsize,NBINS=200,colormap='Blues_r',opacity=0.4)
+arepo_package.make_image(group_particles,group_particles,'xy',ax,boxsize,200,scaled_halo_centers,colormap='Blues_r',opacity=1,about_COM=True,REPOSITION=False)
+
 ax.tick_params(labelsize=30)
 ax.set_xlabel('$X-X_{\mathrm{COM}}$',fontsize=30)
 ax.set_ylabel('$Y-Y_{\mathrm{COM}}$',fontsize=30)
@@ -82,21 +86,23 @@ plt.savefig('halo_image.png',bbox_inches='tight')
 
 initial_positions_of_halo_particles=Coordinates_in_IC[ParticleIDs]
 f,ax=plt.subplots(figsize=(10,10))
-arepo_package.make_image(Coordinates_early_selected,group_particles,'yz',ax,boxsize,NBINS=20,colormap='Blues_r',opacity=0.4)
+#arepo_package.make_image(Coordinates_early_selected,group_particles,'yz',ax,boxsize,NBINS=20,colormap='Blues_r',opacity=0.4)
+arepo_package.make_image(Coordinates_early_selected,group_particles,'xy',ax,boxsize,200,scaled_halo_centers,colormap='Blues_r',opacity=1,about_COM=True,REPOSITION=False)
+
 ax.tick_params(labelsize=30)
 ax.set_xlabel('$X-X_{\mathrm{COM}}$',fontsize=30)
 ax.set_ylabel('$Y-Y_{\mathrm{COM}}$',fontsize=30)
 plt.savefig('halo_particles_close_to_initial_condition.png',bbox_inches='tight')
 
 f,ax=plt.subplots(1,3,figsize=(18,7),sharey=True,sharex=True)
-centers,counts,xmin,xmax=arepo_package.get_distribution(Coordinates_early_selected[:,0],100,-boxsize/2,3*boxsize/2,boxsize)
+centers,counts,xmin,xmax=arepo_package.get_distribution(Coordinates_early_selected[:,0],100,-boxsize/2,5*boxsize/2,boxsize,min_count)
 ax[0].plot(centers,counts)
 ax[0].axvspan(xmin,xmax,alpha=0.3)
 
-centers,counts,ymin,ymax=arepo_package.get_distribution(Coordinates_early_selected[:,1],100,-boxsize/2,3*boxsize/2,boxsize)
+centers,counts,ymin,ymax=arepo_package.get_distribution(Coordinates_early_selected[:,1],100,-boxsize/2,5*boxsize/2,boxsize,min_count)
 ax[1].plot(centers,counts)
 ax[1].axvspan(ymin,ymax,alpha=0.3)
-centers,counts,zmin,zmax=arepo_package.get_distribution(Coordinates_early_selected[:,2],100,-boxsize/2,3*boxsize/2,boxsize)
+centers,counts,zmin,zmax=arepo_package.get_distribution(Coordinates_early_selected[:,2],100,-boxsize/2,5*boxsize/2,boxsize,min_count)
 ax[2].plot(centers,counts)
 ax[2].axvspan(zmin,zmax,alpha=0.3)
 

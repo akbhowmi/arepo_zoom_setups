@@ -2,8 +2,8 @@
 
 path_to_uniform_run='/ufrc/lblecha/aklantbhowmick/arepo_runs_aklant/'  #This selects a preexisting uniform volume run to zoom into
 uniform_run='L25n128MUSIC_rerun'  #Name of the run. Must be such that the output snapshots are located in: 'uniform run'/output 
-index_of_selected_halo=1          #index of the halo within the group catalog at needs to be resimulated
-desired_redshift_of_selected_halo=1    # redshift at which we are selecting the halo
+index_of_selected_halo=0          #index of the halo within the group catalog at needs to be resimulated
+desired_redshift_of_selected_halo=0    # redshift at which we are selecting the halo
 earlier_redshift=125  #redshift at which the particles of the selected halo are traced, in order to find their initial positions. Snapshot must exist at this redshift for the uniform volume run    
 
 #run parameters for generating config files for MUSIC and AREPO 
@@ -30,3 +30,6 @@ sigma_8=0.82
 
 
 FOLDERNAME='%s_zoom_levelmax%d_haloindex%d_redshift%.2f'%(uniform_run,levelmax,index_of_selected_halo,desired_redshift_of_selected_halo)
+
+#auxilliary parameters
+min_count=10

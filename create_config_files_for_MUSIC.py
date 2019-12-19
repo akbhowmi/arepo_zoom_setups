@@ -40,14 +40,25 @@ if not os.path.exists(path_to_generated_files+FOLDERNAME):
         print("Making new directory")
         os.makedirs(path_to_generated_files+FOLDERNAME)
         
-if not os.path.exists(path_to_generated_files+FOLDERNAME+'/'+'MUSIC'):
+#if not os.path.exists(path_to_generated_files+FOLDERNAME+'/'+'MUSIC'):
         print("Making new directory")
         print('Copying MUSIC files')
         source = "./setup_prototypes/MUSIC"
         destination = path_to_generated_files+FOLDERNAME+'/MUSIC'
         shutil.copytree(source, destination)
         #os.makedirs(path_to_generated_files+FOLDERNAME+'/'+'MUSIC')
-        
+
+if not os.path.exists(path_to_generated_files+FOLDERNAME+'/'+'DIAGNOSTICS'):
+        print("Making new directory")
+        print('Copying diagnosic files')
+        destination = path_to_generated_files+FOLDERNAME+'/DIAGNOSTICS/'
+        os.makedirs(destination)
+        shutil.copy('./distribution_of_particles_and_volume_selection.png', destination)
+        shutil.copy('./halo_image.png', destination)
+        shutil.copy('./halo_particles_close_to_initial_condition.png', destination)
+        shutil.copy('./Volume_parameters_for_MUSIC.npy', destination)
+shutil.copy('./zoom_parameters.txt', destination)
+        #os.makedirs(path_to_generated_files+FOLDERNAME+'/'+'MUSIC')        
 
 
 
