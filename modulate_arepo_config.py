@@ -19,31 +19,10 @@ while line:
     exec(line)
 
 
-#FOLDERNAME='L%dn%d_%s'%(BOXSIZE_IN_MPC,N,TYPE)
-if not os.path.exists(path_to_generated_files+FOLDERNAME):
-        print("Making new directory")
-        os.makedirs(path_to_generated_files+FOLDERNAME)
-        
-#if not os.path.exists(path_to_generated_files+FOLDERNAME+'/'+'MUSIC'):
-#        print("Making new directory")
-#        os.makedirs(path_to_generated_files+FOLDERNAME+'/'+'MUSIC')
-        
-if not os.path.exists(path_to_generated_files+FOLDERNAME+'/'+'AREPO'):
-#        print("Making new directory")
-#        os.makedirs(path_to_generated_files+FOLDERNAME+'/'+'AREPO')
-        print('Copying AREPO files')
-        source = "./setup_prototypes/AREPO"
-        destination = path_to_generated_files+FOLDERNAME+'/AREPO'
-        shutil.copytree(source, destination)
-        #os.makedirs(path_to_generated_files+FOLDERNAME+'/'+'MUSIC')
-        
-
 ic_object=h5py.File(path_to_generated_files+FOLDERNAME+'/MUSIC/IC.hdf5')
 header=ic_object['Header'].attrs
 PMGRID=header['suggested_pmgrid']
 GRIDBOOST=header['suggested_gridboost']
-if(GRIDBOOST==0):
-    GRIDBOOST=1
 
 
 zoom_centers,zoom_extent=numpy.load('../preparing_files_for_zoom_simulations/Volume_parameters_for_MUSIC.npy')

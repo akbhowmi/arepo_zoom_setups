@@ -47,7 +47,7 @@ while line:
 
     
     
-basePath=path_to_uniform_run+uniform_run+'/output/'
+basePath=path_to_uniform_run+uniform_run+'/AREPO/%s/'%OUTPUT_FOLDER
 boxsize=arepo_package.get_box_size(basePath)
 particle_property='Coordinates'
 p_type=1
@@ -57,10 +57,10 @@ particle_property='ParticleIDs'
 ParticleIDs,output_redshift=arepo_package.get_particle_property_within_groups(basePath,particle_property,p_type,desired_redshift_of_selected_halo,index_of_selected_halo,group_type='groups',list_all=True)
 boxsize=arepo_package.get_box_size(basePath)
 
-h=h5py.File('/orange/lblecha/aklantbhowmick/ICs_with_MUSIC/L25n128MUSIC_uniform.hdf5')
-hp1=h.get('PartType1')
-ParticleIDs_in_IC=hp1.get('ParticleIDs')[:]
-Coordinates_in_IC=hp1.get('Coordinates')[:]
+#h=h5py.File('/orange/lblecha/aklantbhowmick/ICs_with_MUSIC/L25n128MUSIC_uniform.hdf5')
+#hp1=h.get('PartType1')
+#ParticleIDs_in_IC=hp1.get('ParticleIDs')[:]
+#Coordinates_in_IC=hp1.get('Coordinates')[:]
 
 particle_property='ParticleIDs'
 ParticleIDs_early,output_redshift_early=arepo_package.get_particle_property(basePath,particle_property,p_type,earlier_redshift)
@@ -74,7 +74,7 @@ indices_particles=vec_find_index(ParticleIDs)
 Coordinates_early_selected=Coordinates_early[indices_particles]
 
 
-initial_positions_of_halo_particles=Coordinates_in_IC[ParticleIDs]
+#initial_positions_of_halo_particles=Coordinates_in_IC[ParticleIDs]
 f,ax=plt.subplots(figsize=(10,10))
 #arepo_package.make_image(group_particles,group_particles,'yz',ax,boxsize,NBINS=200,colormap='Blues_r',opacity=0.4)
 arepo_package.make_image(group_particles,group_particles,'xy',ax,boxsize,200,scaled_halo_centers,colormap='Blues_r',opacity=1,about_COM=True,REPOSITION=False)
@@ -84,7 +84,7 @@ ax.set_xlabel('$X-X_{\mathrm{COM}}$',fontsize=30)
 ax.set_ylabel('$Y-Y_{\mathrm{COM}}$',fontsize=30)
 plt.savefig('halo_image.png',bbox_inches='tight')
 
-initial_positions_of_halo_particles=Coordinates_in_IC[ParticleIDs]
+#initial_positions_of_halo_particles=Coordinates_in_IC[ParticleIDs]
 f,ax=plt.subplots(figsize=(10,10))
 #arepo_package.make_image(Coordinates_early_selected,group_particles,'yz',ax,boxsize,NBINS=20,colormap='Blues_r',opacity=0.4)
 arepo_package.make_image(Coordinates_early_selected,group_particles,'xy',ax,boxsize,200,scaled_halo_centers,colormap='Blues_r',opacity=1,about_COM=True,REPOSITION=False)
@@ -95,13 +95,17 @@ ax.set_ylabel('$Y-Y_{\mathrm{COM}}$',fontsize=30)
 plt.savefig('halo_particles_close_to_initial_condition.png',bbox_inches='tight')
 
 f,ax=plt.subplots(1,3,figsize=(18,7),sharey=True,sharex=True)
+#print(Coordinates_early_selected[:,0])
 centers,counts,xmin,xmax=arepo_package.get_distribution(Coordinates_early_selected[:,0],100,-boxsize/2,5*boxsize/2,boxsize,min_count)
 ax[0].plot(centers,counts)
 ax[0].axvspan(xmin,xmax,alpha=0.3)
 
+#print(Coordinates_early_selected[:,1])
 centers,counts,ymin,ymax=arepo_package.get_distribution(Coordinates_early_selected[:,1],100,-boxsize/2,5*boxsize/2,boxsize,min_count)
 ax[1].plot(centers,counts)
 ax[1].axvspan(ymin,ymax,alpha=0.3)
+
+#print(Coordinates_early_selected[:,2])
 centers,counts,zmin,zmax=arepo_package.get_distribution(Coordinates_early_selected[:,2],100,-boxsize/2,5*boxsize/2,boxsize,min_count)
 ax[2].plot(centers,counts)
 ax[2].axvspan(zmin,zmax,alpha=0.3)

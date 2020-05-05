@@ -1,13 +1,14 @@
 #parameters which determine which halo is to be selected to resimulate
 
-path_to_uniform_run='/ufrc/lblecha/aklantbhowmick/arepo_runs_aklant/'  #This selects a preexisting uniform volume run to zoom into
-uniform_run='L25n128MUSIC_rerun'  #Name of the run. Must be such that the output snapshots are located in: 'uniform run'/output 
-index_of_selected_halo=0          #index of the halo within the group catalog at needs to be resimulated
-desired_redshift_of_selected_halo=0    # redshift at which we are selecting the halo
+path_to_uniform_run='/ufrc/lblecha/aklantbhowmick/GAS_BASED_SEED_MODEL_UNIFORM_RUNS/'  #This selects a preexisting uniform volume run to zoom into
+uniform_run='density_and_metallicity_based_criterion'  #Name of the run. Must be such that the output snapshots are located in: 'uniform run'/output 
+OUTPUT_FOLDER='output'
+index_of_selected_halo=4          #index of the halo within the group catalog at needs to be resimulated
+desired_redshift_of_selected_halo=5.    # redshift at which we are selecting the halo
 earlier_redshift=125  #redshift at which the particles of the selected halo are traced, in order to find their initial positions. Snapshot must exist at this redshift for the uniform volume run    
 
 #run parameters for generating config files for MUSIC and AREPO 
-path_to_generated_files='/ufrc/lblecha/aklantbhowmick/NEW_AREPO_RUNS/' #This specifies the path at which the setup is created. The directory will be created if it does not already exist 
+path_to_generated_files='/ufrc/lblecha/aklantbhowmick/GAS_BASED_SEED_MODEL_ZOOM_RUNS/' #This specifies the path at which the setup is created. The directory will be created if it does not already exist 
 zstart=127.     # This specifies the starting redshift at which the initial conditions are created.
 BOXSIZE_IN_MPC=25  # This specifies the simulation boxsize in Mpc. Must match the boxsize of the uniform volume run.
 MUSIC_OUTPUT_FILENAME='IC.hdf5' #Name of the music output file. DO NOT try changing this yet. Need to update the code
@@ -28,8 +29,23 @@ om_b=0.0486
 H0=67.71
 sigma_8=0.82
 
+#blackhole seed parameters
+log_seed_blackhole_mass=numpy.log10(8e5)
+log_seed_FOF_min_mass=numpy.log10(5e10)
 
-FOLDERNAME='%s_zoom_levelmax%d_haloindex%d_redshift%.2f'%(uniform_run,levelmax,index_of_selected_halo,desired_redshift_of_selected_halo)
+log_min_metallicity_for_seed=-5.
+log_max_metallicity_for_seed=-3.
+
+
+#Use the following name if you are working FOF based seed models 
+#FOLDERNAME='Main_branch_%s_zoom_levelmax%d_haloindex%d_redshift%.2f_logbhseedmass%.2f_logFOFseedmass%.2f'%(uniform_run,levelmax,index_of_selected_halo,desired_redshift_of_selected_halo,log_seed_blackhole_mass,log_seed_FOF_min_mass)
+
+#Use the following name if you are working Gas based seed models
+suffix='first_version'
+FOLDERNAME='%s_zoom_levelmin%d_levelmax%d_haloindex%d_redshift%.2f_logbhseedmass%.2f_%s'%(uniform_run,levelmin,levelmax,index_of_selected_halo,desired_redshift_of_selected_halo,log_seed_blackhole_mass,suffix)
+
+
+
 
 #auxilliary parameters
 min_count=10
