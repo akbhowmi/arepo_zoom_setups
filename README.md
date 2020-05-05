@@ -1,7 +1,7 @@
 # arepo_zoom_setups
 This is set of codes that can be used to setup zoom simulations using the cosmological code AREPO and initial condition generator MUSIC.
 
-Important note: In order to use this setup, you must already have uniform simulation run with a known random seed for the initail density field.
+Important note: In order to use this setup, you must already have uniform simulation run with a known random seed for the initail density field. The uniform run must have an output snapshot at z=127 (or higher). 
 
 Following is the sequence of steps to create a zoom setup:
 
