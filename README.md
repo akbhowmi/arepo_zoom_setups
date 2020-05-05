@@ -11,13 +11,13 @@ Step 2: Execute the python file 'create_zoom_volume_for_a_halo.py'.
 
 This code selects your desired halo from a uniform volume run, and traces the particles of the halo to the initial conditions. It then constructs a minimum rectangular volume that contains all the particles. The script also generates the following output images to perform visual sanity checks. A projected image of the selected halo can be seen on 'halo_image.png'. The positions of the particles at the initial time (z=127 by default) can be seen on 'halo_particles_close_to_initial_condition.png'. The initial distributions of particles along x y z and the resulting choice of zoom volume can be seen on 'distribution_of_particles_and_volume_selection.png'  
         
- Step 3:  Execute the python file 'create_config_files_for_MUSIC.py'. This generates the entire configuration for MUSIC in the location given by:        path_to_generated_files + FOLDERNAME  + '/MUSIC'
+ Step 3:  Execute the python file 'create_config_files_for_MUSIC.py'. This generates the entire configuration for MUSIC in the location given by:        path_to_generated_files + FOLDERNAME  + '/MUSIC'. Before doing this, make sure to have your copy of MUSIC in './setup_prototypes/' folder.
  
 where the variables 'path_to_generated_files' and 'FOLDERNAME' are to be set by the user on 'zoom_parameters.txt'
 
 Step 4: Go to the generated 'MUSIC' folder and execute the code using the command './MUSIC MUSIC_CONFIG.txt'. This generates the output initial condition file 'IC.hdf5'
 
-Step5:   Execute the python file 'create_config_files_for_AREPO.py'. This generates the entire configuration for AREPO in the location given by:        path_to_generated_files + FOLDERNAME  + '/AREPO'
+Step5:   Execute the python file 'create_config_files_for_AREPO.py'. This generates the entire configuration for AREPO in the location given by:        path_to_generated_files + FOLDERNAME  + '/AREPO'. Before doing this, make sure to have your copy of AREPO in './setup_prototypes/' folder.
 
 Step6:  Go to the generated 'AREPO/arepo' folder and compile arepo using the command 'make'. 
 
