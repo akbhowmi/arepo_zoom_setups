@@ -18,6 +18,17 @@ while line:
     line = fp.readline()
     exec(line)
 
+#----------------------------------Creating the desired output_list file------------------------------
+z_range=numpy.linspace(z_earliest_snapshot_output,z_latest_snapshot_output,no_of_snapshots)
+f=open('./setup_prototypes/AREPO/output_list_for_zoom.txt','w')
+for z in z_range:
+    scale=1./(1.+z)
+    f.write("%.10f          1\n"%scale)
+f.close()
+#-----------------------------------------------------------------------------------------------------
+
+
+
 
 #FOLDERNAME='L%dn%d_%s'%(BOXSIZE_IN_MPC,N,TYPE)
 if not os.path.exists(path_to_generated_files+FOLDERNAME):
@@ -74,8 +85,8 @@ variables_to_be_edited=numpy.array(['SnapshotFileBase',
                                     'InitCondFile',
                                     'SeedBlackHoleMass',
                                     'MinFoFMassForNewSeed',
-                                    'MinMetallicityForDensestGroupParticle',
-                                    'MaxMetallicityForDensestGroupParticle']) 
+                                    'MinMetallicityForNewSeed',
+                                    'MaxMetallicityForNewSeed']) 
 parameter_values=numpy.array(['snap',
                               '%.7f'%(1./(1+zstart)),
                               '%.4f'%om_m,

@@ -1,0 +1,275 @@
+InitCondFile		   	/ufrc/lblecha/aklantbhowmick/NEW_AREPO_RUNS/L25n128_uniform/MUSIC/IC
+OutputDir                                         ./output/
+SnapshotFileBase		   	snap
+OutputListFilename                                ./output_list.txt
+ICFormat                                          3
+SnapFormat                                        3
+
+MHDSeedDir             4
+MHDSeedValue           1.0e-14
+
+TimeLimitCPU                                      900000
+CpuTimeBetRestartFile                             7200
+FlushCpuTimeDiff       120
+ResubmitOn                                        0
+ResubmitCommand                                   my-scriptfile
+%MaxMemSize                                        3300
+MaxMemSize                                        3600
+
+
+TimeBegin		   	0.0078125
+TimeMax                                           1.0
+ComovingIntegrationOn                             1
+PeriodicBoundariesOn                              1
+CoolingOn                                         1
+StarformationOn                                   1
+
+
+Omega0		   	0.3089
+OmegaLambda		   	0.6911
+OmegaBaryon		   	0.048600
+HubbleParam		   	0.6771
+BoxSize		   	25000
+
+
+OutputListOn                                      1
+TimeBetSnapshot                                   0.0
+TimeOfFirstSnapshot                               0.0
+TimeBetStatistics                                 0.01
+
+
+NumFilesPerSnapshot                               16
+NumFilesWrittenInParallel                         16
+
+
+TypeOfTimestepCriterion                           0
+ErrTolIntAccuracy                                 0.012
+CourantFac                                        0.3
+MaxSizeTimestep                                   0.005
+MinSizeTimestep                                   2.0e-9
+
+%%%%%% added %%%%%%
+%---- Parameters for star formation model
+CritPhysDensity      0       % critical physical density for star formation (in cm^(-3))
+MaxSfrTimescale      2.27    % in internal time units (1.5)
+CritOverDensity      57.7    % overdensity threshold value
+TempSupernova        5.73e7  % in Kelvin (1.0e8)
+TempClouds           1000.0  % in Kelvin
+FactorEVP            573.0   % (1000.0)
+TemperatureThresh    0
+
+%%%%%%%%%%%%%%%%%%%
+
+%%%SfrEfficiency                                     0.01
+InitGasTemp                                       244.8095
+MinGasTemp                                        5
+LimitUBelowThisDensity                            0
+LimitUBelowCertainDensityToThisValue              0
+MinEgySpec                                        0
+
+TypeOfOpeningCriterion                            1
+ErrTolTheta                                       0.7
+ErrTolForceAcc                                    0.0025
+MultipleDomains                                   8
+TopNodeFactor                                     2.5
+
+DesNumNgb                                         64
+MaxNumNgbDeviation                                4
+
+
+UnitLength_in_cm                                  3.085678e+21 %%% IC unit dependent
+UnitMass_in_g                                     1.989e+43
+UnitVelocity_in_cm_per_s                          1e5
+GravityConstantInternal                           0
+
+
+GasSoftFactor                                     2.5
+SofteningComovingType0                            4.0
+SofteningComovingType1                            4.0
+SofteningComovingType2                            4.0
+SofteningComovingType3                            6.84
+%%SofteningComovingType4                                2.92
+%%SofteningComovingType5                                5.0
+SofteningMaxPhysType0                             2.0
+SofteningMaxPhysType1                             2.0
+SofteningMaxPhysType2                             4.0
+SofteningMaxPhysType3                             6.84
+%%SofteningMaxPhysType4                             2.92
+%%SofteningMaxPhysType5                             5.0
+SofteningTypeOfPartType0                          0
+SofteningTypeOfPartType1                          1
+SofteningTypeOfPartType2                          1
+SofteningTypeOfPartType3                          1
+SofteningTypeOfPartType4                          1
+SofteningTypeOfPartType5                          2
+MinimumComovingHydroSoftening                     0.5 %%% Typical values: a reasonable fraction of
+                              
+
+
+
+%%GasSoftFactor                                     2.5
+%%SofteningComovingType0                            1.0
+%%SofteningComovingType1                            1.0
+%%SofteningComovingType2                            2.0
+%%SofteningComovingType3                            1.71
+%%SofteningComovingType4                            2.92
+%%SofteningComovingType5                            1.0
+%%SofteningMaxPhysType0                             0.5
+%%SofteningMaxPhysType1                             0.5
+%%SofteningMaxPhysType2                             1.0
+%%SofteningMaxPhysType3                             1.71
+%%SofteningMaxPhysType4                             2.92
+%%SofteningMaxPhysType5                             0.5
+%%SofteningTypeOfPartType0                          0
+%%SofteningTypeOfPartType1                          1
+%%SofteningTypeOfPartType2                          2
+%%SofteningTypeOfPartType3                          1
+%%SofteningTypeOfPartType4                          1
+%%SofteningTypeOfPartType5                          5
+%%MinimumComovingHydroSoftening                     0.125 %%% Typical values: a reasonable fraction of
+
+
+AdaptiveHydroSofteningSpacing                     1.2
+
+
+ActivePartFracForNewDomainDecomp                  0.003
+CellShapingSpeed                                  0.5
+CellMaxAngleFactor                                2.25
+TargetGasMassFactor                               1
+RefinementCriterion                               1
+DerefinementCriterion                             1
+
+TreecoolFile                                      /ufrc/lblecha/lblecha/arepo_runs/L75TNG_Arepo_GFM_Tables/Treecool/TREECOOL_fg_dec11
+
+
+%%%DensThreshold                                     100
+%%%FeedbackEfficiency                                1
+%%%FeedbackRadiusLimiter                             0.2
+%%%DustOppacityRadiationFeedback                     5
+%%%InputTimeHeatRadiationFeedback                    0.003
+%%%InputTimeMomRadiationFeedback                     0.003
+%%%LumToMassRatioRadiationFeedback                   1000
+%%%RadiationFeedbackAvgPhotonEnergyineV              17
+%%%PhotoionizationGasTemp                            17000
+
+
+IMF_MinMass_Msun                                  0.1
+IMF_MaxMass_Msun                                  100
+AGB_MassTransferOn                                1
+SNIa_MassTransferOn                               1
+SNII_MassTransferOn                               1
+SNII_MinMass_Msun                                 8
+SNII_MaxMass_Msun                                 100
+SNIa_Rate_TAU                                     0.04
+SNIa_Rate_Norm                                    0.0013
+YieldTablePath                                    /ufrc/lblecha/lblecha/arepo_runs/L75TNG_Arepo_GFM_Tables/Yields
+
+DesNumNgbEnrichment                               64
+MaxNumNgbDeviationEnrichment                      4
+%CoolingTablePath                                  /ufrc/lblecha/lblecha/arepo_runs/L75TNG_Arepo_GFM_Tables/Cooling/cooling_metal_UVB_self_shielding_Rahmati12.hdf5
+CoolingTablePath             		   	  /ufrc/lblecha/lblecha/arepo_runs/L75TNG_Arepo_GFM_Tables/Cooling/cooling_metal_AGN_Compton_self_shielding_Rahmati12.hdf5
+%CoolingTablePath				  ./arepo/data/SelfShielding_Rahmati12
+
+MinMetalTemp                                      10000
+
+%%%%%% added %%%%%%
+%-----  Photometrics
+PhotometricsTablePath       /ufrc/lblecha/lblecha/arepo_runs/L75TNG_Arepo_GFM_Tables/Photometrics/
+
+
+%----- AGN radiation
+TreecoolFileAGN             ./arepo/data/TREECOOL_AGN
+SelfShieldingDensity        0.1295
+ObscurationFactor           0.3
+ObscurationSlope            0.07
+
+%----- Softer EOS
+FactorForSofterEQS   0.3
+TempForSofterEQS     1e4
+
+%----- Initial gas metallicity
+PreEnrichTime              0.0078125
+PreEnrichAbundanceFile     /ufrc/lblecha/lblecha/arepo_runs/L75TNG_initial_abundances.txt
+% Contents of this File (actual renormalization will be done in the code):
+%
+%  Hydrogen         0.76
+%  Helium           0.24
+%  Carbon           1.0e-10
+%  Nitrogen         1.0e-10
+%  Oxygen           1.0e-10
+%  Neon             1.0e-10
+%  Magnesium        1.0e-10
+%  Silicon          1.0e-10
+%  Iron             1.0e-10
+%  OtherMetals      1.0e-10
+
+%----- Wind
+WindEnergyIn1e51erg          3.6
+VariableWindVelFactor        7.4
+ThermalWindFraction          0.1
+VariableWindSpecMomentum     0.0
+WindFreeTravelMaxTimeFactor  0.025
+WindFreeTravelDensFac        0.05
+TimeBetOnTheFlyFoF           1.03
+MinWindVel                   350.0
+
+%----- Reduction of wind energy for enriched gas
+WindEnergyReductionFactor	0.25
+WindEnergyReductionMetallicity  0.002
+WindEnergyReductionExponent     2
+
+%----- Wind stripping
+WindDumpFactor       0.6
+
+%----- Self-Shielding
+SelfShieldingFile    ./arepo/data/SelfShielding_Rahmati12
+
+% ----- NSNS Enrichment
+NSNS_MassTransferOn            1            % do the thing
+NSNS_MassPerEvent              0.05         % Msun, from Shen et al. 2015, equals (mass ejected per NSNS$
+NSNS_Rate_TAU                  0.1          % again, Shen 2015, 0.04 would be for the same as SNIa, coul$
+NSNS_per_SNIa                  1e-3         % right now, just a number ERR and I talked about, need a re$
+
+%%%%%%%%%%%%%%%%%%%
+
+
+
+%#MeanVolume                                        30517.6
+ReferenceGasPartMass                              0.0		%#5.00384e-06
+
+MinimumDensityOnStartUp                           1.0e-20  %1.63966e-10
+%MaxVelocityKick					  500.0
+
+
+ErrTolThetaSubfind				0.7
+DesLinkNgb					20
+
+
+%-----  Black holes
+BlackHoleAccretionFactor         1.0
+BlackHoleFeedbackFactor          0.1
+BlackHoleEddingtonFactor         1.0
+SeedBlackHoleMass		   	8.000000000000004e-5
+MinFoFMassForNewSeed		   	4.999999999999999e2
+DesNumNgbBlackHole               256
+BlackHoleMaxAccretionRadius      1.e20
+BlackHoleRadiativeEfficiency     0.2
+
+%----- Black hole seed models
+MinDensityForDensestGroupParticle       6.0e-7                     % this parameter is depreciated. It has no effect on the code
+MinMetallicityForDensestGroupParticle   1.0e-5                     % in solar metallicity units
+MaxMetallicityForDensestGroupParticle   1.0e-3                     % in solar metallicity units
+%-----  Black hole adios wind model
+QuasarThreshold                        0.002
+RadioFeedbackFactor                    1.0
+RadioFeedbackReiorientationFactor      20.0
+RadioFeedbackMinDensityFactor          0.01
+
+
+%-----  Black central placement
+BlackHoleCenteringMassMultiplier       1000
+
+
+
+
+

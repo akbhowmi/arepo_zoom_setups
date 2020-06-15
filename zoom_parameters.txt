@@ -8,7 +8,7 @@ desired_redshift_of_selected_halo=5.    # redshift at which we are selecting the
 earlier_redshift=125  #redshift at which the particles of the selected halo are traced, in order to find their initial positions. Snapshot must exist at this redshift for the uniform volume run    
 
 #run parameters for generating config files for MUSIC and AREPO 
-path_to_generated_files='/ufrc/lblecha/aklantbhowmick/GAS_BASED_SEED_MODEL_ZOOM_RUNS/' #This specifies the path at which the setup is created. The directory will be created if it does not already exist 
+path_to_generated_files='/ufrc/lblecha/aklantbhowmick/GAS_BASED_SEED_MODEL_ZOOM_RUNS4/' #This specifies the path at which the setup is created. The directory will be created if it does not already exist 
 zstart=127.     # This specifies the starting redshift at which the initial conditions are created.
 BOXSIZE_IN_MPC=25  # This specifies the simulation boxsize in Mpc. Must match the boxsize of the uniform volume run.
 MUSIC_OUTPUT_FILENAME='IC.hdf5' #Name of the music output file. DO NOT try changing this yet. Need to update the code
@@ -20,7 +20,12 @@ prototypefilepath_AREPO_param = './setup_prototypes/AREPO/param.txt' #baseline A
 generated_AREPO_config_filename = '/AREPO/arepo/Config.sh' #generated AREPO config file. Do not change the path
 generated_AREPO_param_filename = '/AREPO/param.txt' #generated AREPO parameter file. Do not change the path
 levelmin=7
-levelmax=9
+levelmax=11
+
+#Desired redshifts for snapshots
+z_earliest_snapshot_output = 25
+z_latest_snapshot_output = 5
+no_of_snapshots=21
 
 #Base cosmology
 om_m=0.3089
@@ -30,10 +35,10 @@ H0=67.71
 sigma_8=0.82
 
 #blackhole seed parameters
-log_seed_blackhole_mass=numpy.log10(8e5)
+log_seed_blackhole_mass=numpy.log10(1e5/8.)
 log_seed_FOF_min_mass=numpy.log10(5e10)
 
-log_min_metallicity_for_seed=-5.
+log_min_metallicity_for_seed=-15.
 log_max_metallicity_for_seed=-3.
 
 
@@ -41,7 +46,7 @@ log_max_metallicity_for_seed=-3.
 #FOLDERNAME='Main_branch_%s_zoom_levelmax%d_haloindex%d_redshift%.2f_logbhseedmass%.2f_logFOFseedmass%.2f'%(uniform_run,levelmax,index_of_selected_halo,desired_redshift_of_selected_halo,log_seed_blackhole_mass,log_seed_FOF_min_mass)
 
 #Use the following name if you are working Gas based seed models
-suffix='first_version'
+suffix='NSC'
 FOLDERNAME='%s_zoom_levelmin%d_levelmax%d_haloindex%d_redshift%.2f_logbhseedmass%.2f_%s'%(uniform_run,levelmin,levelmax,index_of_selected_halo,desired_redshift_of_selected_halo,log_seed_blackhole_mass,suffix)
 
 
